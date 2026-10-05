@@ -25,6 +25,9 @@ void test_printLegacyData_int(void)
 /// Verify the returned string matches "3.14".
 void test_printLegacyData_double(void) 
 {
+    LegacyData data;
+    data.d = 3.14
+    std::string result = printLegacyData(data, 'd')
     TEST_ASSERT_TRUE_MESSAGE(result == "3.14", "Did not return 3.14.");
 }
 
