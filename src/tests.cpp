@@ -2,7 +2,7 @@
 #define UNITY_H
 #include "unity.h"
 #endif
-
+#include <string>
 #include "code.hpp"
 #include <sstream>
 #include <iostream>
@@ -15,6 +15,9 @@
 /// Verify the returned string matches "42".
 void test_printLegacyData_int(void) 
 {
+    LegacyData data;
+    data.i = 42;
+    std::string result = printLegacyData(data, 'i');
     TEST_ASSERT_TRUE_MESSAGE(result == "42", "Did not return 42.");
 }
 
