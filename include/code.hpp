@@ -35,7 +35,9 @@ std::string printLegacyData(LegacyData data, char type);
 /// - Pointer member named 'nextPtr' pointing to structNode
 /// - char member named 'typeData' ('i', 'd', 'c')
 struct structNode {
-    // TODO: Define members here
+    LegacyData value;
+    structNode* nextPtr;
+    char typeData;
 };
 
 /// Manually initializes a structNode with the given data and type.

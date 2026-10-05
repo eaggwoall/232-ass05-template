@@ -43,6 +43,12 @@ std::string printLegacyData(LegacyData data, char type) {
 /// Initializes a structNode with value, type indicator, and nullptr nextPtr.
 void initStructNode(structNode* nPtr, LegacyData val, char type) {
     // TODO: Check if nPtr is nullptr before assigning fields
+    if (nPtr == nullptr) {
+        return;
+    }
+    nPtr->value = val;
+    nPtr->typeData = type;
+    nPtr->nextPtr = nullptr;
 }
 
 /// Dynamically allocates two structNodes.
@@ -51,8 +57,18 @@ void initStructNode(structNode* nPtr, LegacyData val, char type) {
 /// Links Node 1 -> Node 2 -> nullptr
 /// Returns pointer to Node 1.
 structNode* createTwoStructNodes() {
-    // TODO: Allocate dynamically using new, initialize both nodes, link them, and return head
-    return nullptr;
+    // TODO: Allocate dynamically using new, initialize both nodes, link them, and return head]
+    LegacyData firstVal;
+    firstVal.i = 5;
+
+    LegacyData secondVal;
+    secondVal.d = 3.14;
+    
+    structNode* first = new structNode;
+    structNode* second = new structNode;
+
+    first->nextPtr=second;
+    return first;
 }
 
 // ============================================================
