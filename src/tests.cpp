@@ -15,14 +15,14 @@
 /// Verify the returned string matches "42".
 void test_printLegacyData_int(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    TEST_ASSERT_TRUE_MESSAGE(result == "42", "Did not return 42.");
 }
 
 /// Create a LegacyData union with a double (3.14). Call printLegacyData.
 /// Verify the returned string matches "3.14".
 void test_printLegacyData_double(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    TEST_ASSERT_TRUE_MESSAGE(result == "3.14", "Did not return 3.14.");
 }
 
 // ============================================================
