@@ -44,7 +44,7 @@ void tearDown(void) {}
 int main(void) 
 {
     UNITY_BEGIN();
-
+        
     // ========== STAGE 0 ==========
     RUN_TEST(test_printLegacyData_int);
     RUN_TEST(test_printLegacyData_double);

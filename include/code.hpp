@@ -64,7 +64,7 @@ public:
     // LegacyData value;
     // classNode* nextPtr;
     // char typeData;
-
+    
     // classNode(LegacyData val, char type);
 };
 

@@ -42,13 +42,13 @@ void test_createTwoStructNodes_links_correctly(void)
 {
     structNode* head = createTwoStructNodes();
     TEST_ASSERT_NOT_NULL(head);
-    TEST_ASSERT_NOT_NULL(head->nextPTr);
+    TEST_ASSERT_NOT_NULL(head->nextPtr);
 
     TEST_ASSERT_EQUAL_CHAR('i', head->typeData);
-    TEST_ASSER_EQUAL_INT(5, head->value.i)
+    TEST_ASSERT_EQUAL_INT(5, head->value.i);
 
     TEST_ASSERT_EQUAL_CHAR('d', head->nextPtr->typeData);
-    TEST_ASSER_TRUE_MESSAGE(head->nextPtr->value.d > 3.139 && head->nextPtr->value.d < 3.14001, "Second node expected value approx. 3.14.")
+    TEST_ASSERT_TRUE_MESSAGE(head->nextPtr->value.d > 3.139 && head->nextPtr->value.d < 3.14001, "Second node expected value approx. 3.14.");
     
     TEST_ASSERT_NULL(head->nextPtr->nextPtr);
 
