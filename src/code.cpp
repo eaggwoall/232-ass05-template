@@ -67,6 +67,9 @@ structNode* createTwoStructNodes() {
     structNode* first = new structNode;
     structNode* second = new structNode;
 
+    initStructNode(first, firstVal, 'i');
+    initStructNode(second, secondVal, 'd');
+    
     first->nextPtr=second;
     return first;
 }
