@@ -69,7 +69,7 @@ structNode* createTwoStructNodes() {
 
     initStructNode(first, firstVal, 'i');
     initStructNode(second, secondVal, 'd');
-    
+
     first->nextPtr=second;
     return first;
 }
@@ -83,13 +83,22 @@ structNode* createTwoStructNodes() {
 
 // uncomment the following code to implement the classNode constructor
 
-// classNode::classNode(LegacyData val, char type) {
-//     // TODO: Assign value, typeData, and set nextPtr to nullptr
-// }
+classNode::classNode(LegacyData val, char type) {
+    // TODO: Assign value, typeData, and set nextPtr to nullptr
+    
+}
 
 /// Dynamically allocates two classNodes (int 5, double 3.14) and links them.
 classNode* createTwoClassNodes() {
     // TODO: Allocate dynamically, link nodes, and return head
+    classNode* first = new classNode;
+    classNode* second = new classNode;
+
+    LegacyData firstVal;
+    firstVal.i = 5;
+    LegacyData secondVal;
+    secondVal.d = 3.14;
+
     return nullptr;
 }
 
