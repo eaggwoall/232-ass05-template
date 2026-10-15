@@ -88,7 +88,16 @@ void test_createTwoClassNodes_links_correctly(void)
 /// Clean up allocated memory.
 void test_createTwoTemplateNodes_links_correctly(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    classNodeT<int>* head = createTwoTemplateNodes();
+    TEST_ASSERT_NOT_NULL(head);
+    TEST_ASSERT_NOT_NULL(head->nextPtr);
+
+    TEST_ASSERT_EQUAL_INT(5, head->value);
+    TEST_ASSERT_EQUAL_INT(3, head->nextPtr->value);
+    TEST_ASSERT_NULL(head->nextPtr->nextPtr);
+
+    delete head->nextPtr;
+    delete head;
 }
 
 // ============================================================

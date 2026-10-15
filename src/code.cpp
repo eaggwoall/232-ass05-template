@@ -107,8 +107,11 @@ classNode* createTwoClassNodes() {
 
 /// Dynamically allocates two classNodeT<int> objects (int 5, int 3) and links them.
 classNodeT<int>* createTwoTemplateNodes() {
-    // TODO: Instantiate classNodeT<int> nodes using new, link them, and return head
-    return nullptr;
+    classNodeT<int>* first = new classNodeT<int>(5);
+    classNodeT<int>* second = new classNodeT<int>(3);
+
+    first->nextPtr = second;
+    return first;
 }
 
 // ============================================================
