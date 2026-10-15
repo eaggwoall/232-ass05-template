@@ -108,7 +108,20 @@ void test_createTwoTemplateNodes_links_correctly(void)
 /// Verify listLength() returns 2 after insertions.
 void test_linkedList_addFirst_updates_counter(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList list;
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+    TEST_ASSERT_EQUAL_INT(-1, list.addFirst(nullptr));
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+
+    classNodeVariant* first = new classNodeVariant(10);
+    classNodeVariant* second = new classNodeVariant(20);
+    TEST_ASSERT_NULL(first->nextPtr);
+    TEST_ASSERT_EQUAL_INT(0, list.addFirst(first));
+    TEST_ASSERT_EQUAL_INT(1, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.addFirst(second));
+    TEST_ASSERT_EQUAL_INT(2, list.listLength());
+    TEST_ASSERT_EQUAL_PTR(first, second->nextPtr);
+    TEST_ASSERT_NULL(first->nextPtr);
 }
 
 /// Create a LinkedList. Add nodes (10, then 20) using addLast.

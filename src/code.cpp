@@ -118,26 +118,33 @@ classNodeT<int>* createTwoTemplateNodes() {
 // STAGE 4: C++17 Variant and LinkedList Manager
 // ============================================================
 
-// uncomment the following code to implement the LinkedList methods
+LinkedList::LinkedList() {
+    headPtr = nullptr;
+    counter = 0;
+}
 
-// LinkedList::LinkedList() {
-//     // TODO: Initialize headPtr to nullptr and counter to 0
-// }
+LinkedList::~LinkedList() {
+    destroyList();
+}
 
-// LinkedList::~LinkedList() {
-//     // TODO: Clean up memory by calling destroyList()
-// }
-//uncoment the following code to implement the LinkedList methods
+void LinkedList::destroyList() {
+    while (headPtr != nullptr) {
+        classNodeVariant* tempPtr = headPtr;
+        headPtr = headPtr->nextPtr;
+        delete tempPtr;
+    }
+    counter = 0;
+}
 
-// void LinkedList::destroyList() {
-//     // TODO: Iterate through list, delete all nodes, and reset counter to 0
-// }
-
-// int LinkedList::addFirst(classNodeVariant* newNodePtr) {
-//     // TODO: Prepend node to the front of list, increment counter
-//     // Return -1 if newNodePtr is nullptr, 0 on success
-//     return -1;
-// }
+int LinkedList::addFirst(classNodeVariant* newNodePtr) {
+    if (newNodePtr == nullptr) {
+        return -1;
+    }
+    newNodePtr->nextPtr = headPtr;
+    headPtr = newNodePtr;
+    counter++;
+    return 0;
+}
 
 // int LinkedList::addLast(classNodeVariant* newNodePtr) {
 //     // TODO: Append node to the end of list, increment counter
@@ -171,7 +178,6 @@ classNodeT<int>* createTwoTemplateNodes() {
 //     return -1;
 // }
 
-// int LinkedList::listLength() {
-//     // TODO: Return node count
-//     return 0;
-// }
+int LinkedList::listLength() {
+    return counter;
+}
