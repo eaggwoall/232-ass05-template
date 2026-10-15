@@ -65,7 +65,18 @@ void test_createTwoStructNodes_links_correctly(void)
 /// Clean up allocated memory.
 void test_createTwoClassNodes_links_correctly(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    classNode* head = createTwoClassNodes();
+    TEST_ASSERT_NOT_NULL(head);
+    TEST_ASSERT_NOT_NULL(head->nextPtr);
+
+    TEST_ASSERT_EQUAL_CHAR('i', head->typeData);
+    TEST_ASSERT_EQUAL_INT(5, head->value.i);
+    TEST_ASSERT_EQUAL_CHAR('d', head->nextPtr->typeData);
+    TEST_ASSERT_TRUE_MESSAGE(head->nextPtr->value.d > 3.139 && head->nextPtr->value.d < 3.14001, "Second node expected value approx. 3.14.");
+    TEST_ASSERT_NULL(head->nextPtr->nextPtr);
+
+    delete head->nextPtr;
+    delete head;
 }
 
 // ============================================================
