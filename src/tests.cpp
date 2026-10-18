@@ -31,6 +31,22 @@ void test_printLegacyData_double(void)
     TEST_ASSERT_TRUE_MESSAGE(result == "3.14", "Did not return 3.14.");
 }
 
+/// Verify legacy string values, null pointers, and unknown type indicators.
+void test_printLegacyData_string_and_null(void)
+{
+    LegacyData data;
+    char text[] = "test";
+    data.cPtr = text;
+    std::string result = printLegacyData(data, 'c');
+    TEST_ASSERT_TRUE_MESSAGE(result == "test", "Did not return the string value.");
+
+    data.cPtr = nullptr;
+    result = printLegacyData(data, 'c');
+    TEST_ASSERT_TRUE_MESSAGE(result == "nullptr", "Did not return nullptr for a null string.");
+    result = printLegacyData(data, 'x');
+    TEST_ASSERT_TRUE_MESSAGE(result == "unknown", "Did not return unknown for an invalid type.");
+}
+
 // ============================================================
 // STAGE 1 Tests
 // ============================================================

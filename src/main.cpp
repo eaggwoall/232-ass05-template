@@ -13,6 +13,7 @@
 // STAGE 0
 void test_printLegacyData_int(void);
 void test_printLegacyData_double(void);
+void test_printLegacyData_string_and_null(void);
 
 // STAGE 1
 void test_createTwoStructNodes_links_correctly(void);
@@ -48,6 +49,7 @@ int main(void)
     // ========== STAGE 0 ==========
     RUN_TEST(test_printLegacyData_int);
     RUN_TEST(test_printLegacyData_double);
+    RUN_TEST(test_printLegacyData_string_and_null);
 
     // ========== STAGE 1 ==========
     RUN_TEST(test_createTwoStructNodes_links_correctly);

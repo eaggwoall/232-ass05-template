@@ -31,6 +31,8 @@ std::string printLegacyData(LegacyData data, char type) {
     if(type == 'c'){
         if(data.cPtr != NULL){
             result = std::format("{}", data.cPtr);
+        } else {
+            result = "nullptr";
         }
     }
     return result;
