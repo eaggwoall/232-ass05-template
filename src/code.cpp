@@ -175,11 +175,22 @@ int LinkedList::deleteFirst() {
     return 0;
 }
 
-// int LinkedList::deleteLast() {
-//     // TODO: Find second-to-last node, delete last node, decrement counter
-//     // Return -1 if list is empty, 0 on success
-//     return -1;
-// }
+int LinkedList::deleteLast() {
+    if (headPtr == nullptr) {
+        return -1;
+    }
+    if (headPtr->nextPtr == nullptr) {
+        return deleteFirst();
+    }
+    classNodeVariant* currentPtr = headPtr;
+    while (currentPtr->nextPtr->nextPtr != nullptr) {
+        currentPtr = currentPtr->nextPtr;
+    }
+    delete currentPtr->nextPtr;
+    currentPtr->nextPtr = nullptr;
+    counter--;
+    return 0;
+}
 
 int LinkedList::deleteValue(ModernData targetValue) {
     classNodeVariant* currentPtr = headPtr;

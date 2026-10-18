@@ -125,7 +125,7 @@ public:
     int addFirst(classNodeVariant* newNodePtr);
     int addLast(classNodeVariant* newNodePtr);
     int deleteFirst();
-//     int deleteLast();
+    int deleteLast();
     int deleteValue(ModernData targetValue);
     int printList();
     int listLength();
