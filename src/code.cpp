@@ -164,11 +164,16 @@ int LinkedList::addLast(classNodeVariant* newNodePtr) {
     return 0;
 }
 
-// int LinkedList::deleteFirst() {
-//     // TODO: Delete first node, update headPtr, decrement counter
-//     // Return -1 if list is empty, 0 on success
-//     return -1;
-// }
+int LinkedList::deleteFirst() {
+    if (headPtr == nullptr) {
+        return -1;
+    }
+    classNodeVariant* tempPtr = headPtr;
+    headPtr = headPtr->nextPtr;
+    delete tempPtr;
+    counter--;
+    return 0;
+}
 
 // int LinkedList::deleteLast() {
 //     // TODO: Find second-to-last node, delete last node, decrement counter

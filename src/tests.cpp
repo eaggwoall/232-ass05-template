@@ -210,7 +210,24 @@ void test_linkedList_destroyList_clears_all(void)
 /// Verify listLength() becomes 2 and operation returns 0.
 void test_linkedList_deleteFirst(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList list;
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteFirst());
+    list.addLast(new classNodeVariant(10));
+    list.addLast(new classNodeVariant(20));
+    list.addLast(new classNodeVariant(30));
+
+    TEST_ASSERT_EQUAL_INT(0, list.deleteFirst());
+    TEST_ASSERT_EQUAL_INT(2, list.listLength());
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteValue(10));
+    TEST_ASSERT_EQUAL_INT(0, list.deleteFirst());
+    TEST_ASSERT_EQUAL_INT(1, list.listLength());
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteValue(20));
+    TEST_ASSERT_EQUAL_INT(0, list.deleteFirst());
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteFirst());
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.addLast(new classNodeVariant(40)));
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(40));
 }
 
 /// Create a LinkedList with nodes (10, 20, 30).
