@@ -185,7 +185,24 @@ void test_linkedList_deleteValue_removes_variant(void)
 /// Verify listLength() becomes 0.
 void test_linkedList_destroyList_clears_all(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList list;
+    list.destroyList();
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+    list.addLast(new classNodeVariant(10));
+    list.addLast(new classNodeVariant(2.5));
+    list.addLast(new classNodeVariant(std::string("test")));
+    TEST_ASSERT_EQUAL_INT(3, list.listLength());
+
+    list.destroyList();
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+    TEST_ASSERT_EQUAL_INT(-1, list.printList());
+    list.destroyList();
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+
+    TEST_ASSERT_EQUAL_INT(0, list.addLast(new classNodeVariant(40)));
+    TEST_ASSERT_EQUAL_INT(1, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(40));
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
 }
 
 /// Create a LinkedList with nodes (10, 20, 30).
