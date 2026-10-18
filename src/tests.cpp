@@ -128,7 +128,23 @@ void test_linkedList_addFirst_updates_counter(void)
 /// Capture std::cout and verify elements appear in order ("10" before "20").
 void test_linkedList_addLast_places_at_end(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList list;
+    TEST_ASSERT_EQUAL_INT(-1, list.addLast(nullptr));
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.addLast(new classNodeVariant(10)));
+    TEST_ASSERT_EQUAL_INT(0, list.addLast(new classNodeVariant(20)));
+    TEST_ASSERT_EQUAL_INT(2, list.listLength());
+
+    std::ostringstream output;
+    std::streambuf* oldBuffer = std::cout.rdbuf(output.rdbuf());
+    int result = list.printList();
+    std::cout.rdbuf(oldBuffer);
+
+    std::string printed = output.str();
+    TEST_ASSERT_EQUAL_INT(0, result);
+    TEST_ASSERT_TRUE_MESSAGE(printed.find("10") != std::string::npos, "Did not print 10.");
+    TEST_ASSERT_TRUE_MESSAGE(printed.find("20") != std::string::npos, "Did not print 20.");
+    TEST_ASSERT_TRUE_MESSAGE(printed.find("10") < printed.find("20"), "Nodes were not printed in insertion order.");
 }
 
 /// Create a LinkedList with an int, double, and string.

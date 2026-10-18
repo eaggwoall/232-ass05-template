@@ -146,11 +146,23 @@ int LinkedList::addFirst(classNodeVariant* newNodePtr) {
     return 0;
 }
 
-// int LinkedList::addLast(classNodeVariant* newNodePtr) {
-//     // TODO: Append node to the end of list, increment counter
-//     // Return -1 if newNodePtr is nullptr, 0 on success
-//     return -1;
-// }
+int LinkedList::addLast(classNodeVariant* newNodePtr) {
+    if (newNodePtr == nullptr) {
+        return -1;
+    }
+    newNodePtr->nextPtr = nullptr;
+    if (headPtr == nullptr) {
+        headPtr = newNodePtr;
+    } else {
+        classNodeVariant* currentPtr = headPtr;
+        while (currentPtr->nextPtr != nullptr) {
+            currentPtr = currentPtr->nextPtr;
+        }
+        currentPtr->nextPtr = newNodePtr;
+    }
+    counter++;
+    return 0;
+}
 
 // int LinkedList::deleteFirst() {
 //     // TODO: Delete first node, update headPtr, decrement counter
@@ -171,12 +183,24 @@ int LinkedList::addFirst(classNodeVariant* newNodePtr) {
 //     return -1;
 // }
 
-// int LinkedList::printList() {
-//     // TODO: Iterate through list and print each variant value to std::cout
-//     // Use std::holds_alternative or std::get
-//     // Return -1 if list is empty, 0 on success
-//     return -1;
-// }
+int LinkedList::printList() {
+    if (headPtr == nullptr) {
+        return -1;
+    }
+    classNodeVariant* currentPtr = headPtr;
+    while (currentPtr != nullptr) {
+        if (std::holds_alternative<int>(currentPtr->value)) {
+            std::cout << std::get<int>(currentPtr->value);
+        } else if (std::holds_alternative<double>(currentPtr->value)) {
+            std::cout << std::get<double>(currentPtr->value);
+        } else {
+            std::cout << std::get<std::string>(currentPtr->value);
+        }
+        std::cout << '\n';
+        currentPtr = currentPtr->nextPtr;
+    }
+    return 0;
+}
 
 int LinkedList::listLength() {
     return counter;
