@@ -260,5 +260,25 @@ void test_linkedList_deleteLast(void)
 /// Verify printed output contains "1", "2.5" (or "2.50"), and "test".
 void test_linkedList_printList(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList list;
+    std::ostringstream output;
+    std::streambuf* oldBuffer = std::cout.rdbuf(output.rdbuf());
+    int result = list.printList();
+    std::cout.rdbuf(oldBuffer);
+    TEST_ASSERT_EQUAL_INT(-1, result);
+    TEST_ASSERT_TRUE_MESSAGE(output.str().empty(), "Empty list should not print values.");
+
+    list.addLast(new classNodeVariant(1));
+    list.addLast(new classNodeVariant(2.5));
+    list.addLast(new classNodeVariant(std::string("test")));
+    oldBuffer = std::cout.rdbuf(output.rdbuf());
+    result = list.printList();
+    std::cout.rdbuf(oldBuffer);
+
+    std::string printed = output.str();
+    TEST_ASSERT_EQUAL_INT(0, result);
+    TEST_ASSERT_TRUE_MESSAGE(printed.find("1") != std::string::npos, "Did not print 1.");
+    TEST_ASSERT_TRUE_MESSAGE(printed.find("2.5") != std::string::npos, "Did not print 2.5.");
+    TEST_ASSERT_TRUE_MESSAGE(printed.find("test") != std::string::npos, "Did not print test.");
+    TEST_ASSERT_EQUAL_INT(3, list.listLength());
 }
