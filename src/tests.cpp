@@ -152,7 +152,32 @@ void test_linkedList_addLast_places_at_end(void)
 /// Verify list length decreases to 2 and second call returns -1.
 void test_linkedList_deleteValue_removes_variant(void) 
 {
-    TEST_ASSERT_TRUE_MESSAGE(0, "TODO: Implement this test");
+    LinkedList list;
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteValue(10));
+    list.addLast(new classNodeVariant(10));
+    list.addLast(new classNodeVariant(3.14));
+    list.addLast(new classNodeVariant(std::string("test")));
+
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(3.14));
+    TEST_ASSERT_EQUAL_INT(2, list.listLength());
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteValue(3.14));
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteValue(10.0));
+    TEST_ASSERT_EQUAL_INT(2, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(std::string("test")));
+    TEST_ASSERT_EQUAL_INT(1, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(10));
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
+    TEST_ASSERT_EQUAL_INT(-1, list.deleteValue(10));
+
+    list.addLast(new classNodeVariant(10));
+    list.addLast(new classNodeVariant(10));
+    list.addLast(new classNodeVariant(20));
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(10));
+    TEST_ASSERT_EQUAL_INT(2, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(10));
+    TEST_ASSERT_EQUAL_INT(1, list.listLength());
+    TEST_ASSERT_EQUAL_INT(0, list.deleteValue(20));
+    TEST_ASSERT_EQUAL_INT(0, list.listLength());
 }
 
 /// Create a LinkedList and insert three nodes.

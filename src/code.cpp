@@ -176,12 +176,25 @@ int LinkedList::addLast(classNodeVariant* newNodePtr) {
 //     return -1;
 // }
 
-// int LinkedList::deleteValue(ModernData targetValue) {
-//     // TODO: Traverse list, find node matching targetValue, unlink and delete it
-//     // Decrement counter
-//     // Return 0 if found and removed, -1 if not found or list is empty
-//     return -1;
-// }
+int LinkedList::deleteValue(ModernData targetValue) {
+    classNodeVariant* currentPtr = headPtr;
+    classNodeVariant* previousPtr = nullptr;
+    while (currentPtr != nullptr) {
+        if (currentPtr->value == targetValue) {
+            if (previousPtr == nullptr) {
+                headPtr = currentPtr->nextPtr;
+            } else {
+                previousPtr->nextPtr = currentPtr->nextPtr;
+            }
+            delete currentPtr;
+            counter--;
+            return 0;
+        }
+        previousPtr = currentPtr;
+        currentPtr = currentPtr->nextPtr;
+    }
+    return -1;
+}
 
 int LinkedList::printList() {
     if (headPtr == nullptr) {
